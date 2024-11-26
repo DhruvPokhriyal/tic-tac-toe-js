@@ -10,3 +10,8 @@ const Gameboard = (function () {
     const cross = "X";
     const circle = "O";
 })();
+
+function player(name, sign) {
+    this.name = name;
+    this.sign = sign;
+}
