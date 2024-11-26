@@ -7,4 +7,6 @@ const Gameboard = (function () {
         return board;
     }
     const gameboard = createBoard(3, 3);
+    const cross = "X";
+    const circle = "O";
 })();
