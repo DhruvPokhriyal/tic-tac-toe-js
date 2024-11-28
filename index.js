@@ -6,7 +6,7 @@ const Gameboard = (function () {
         }
         return board;
     }
-    this.winnerCheck = function (player1, player2) {
+    this.winCondition = function (sign) {
         function linearStreak(sign) {
             let rowStreak = true;
             let columnStreak = true;
@@ -32,11 +32,16 @@ const Gameboard = (function () {
             }
             return streak;
         }
-        function offDiagonalSearch(sign) {
+        function offDiagonalStreak(sign) {
             return (
                 gameboard[0][2] == sign && gameboard[1][1] && gameboard[2][0]
             );
         }
+        return (
+            linearStreak(sign) ||
+            diagonalStreak(sign) ||
+            offDiagonalStreak(sign)
+        );
     };
     const gameboard = createBoard(3, 3);
     const cross = "X";
