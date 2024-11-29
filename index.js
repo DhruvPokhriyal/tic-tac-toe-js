@@ -46,8 +46,6 @@ const Gameboard = (function () {
         );
     };
     const gameboard = createBoard(3, 3);
-    const cross = "X";
-    const circle = "O";
 })();
 
 function player(name, sign) {
@@ -57,4 +55,5 @@ function player(name, sign) {
     this.updateScore = function () {
         this.score++;
     };
+    return { gameboard, winCondition };
 }
