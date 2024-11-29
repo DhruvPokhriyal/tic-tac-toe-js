@@ -46,7 +46,8 @@ const Gameboard = (function () {
         );
     };
     const gameboard = createBoard(3, 3);
-    return { gameboard, winCondition };
+    const getBoard = () => gameboard;
+    return { getBoard, winCondition };
 })();
 
 const gameContoller = (function () {
