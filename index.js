@@ -46,6 +46,7 @@ const Gameboard = (function () {
         );
     };
     const gameboard = createBoard(3, 3);
+    return { gameboard, winCondition };
 })();
 
 function player(name, sign) {
@@ -55,5 +56,6 @@ function player(name, sign) {
     this.updateScore = function () {
         this.score++;
     };
-    return { gameboard, winCondition };
 }
+
+const gameContoller = (function () {})();
