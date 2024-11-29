@@ -59,4 +59,8 @@ const gameContoller = (function () {
             this.score++;
         };
     }
+    const cross = "X";
+    const circle = "O";
+    const red = new player("Red", cross);
+    const blue = new player("Blue", circle);
 })();
