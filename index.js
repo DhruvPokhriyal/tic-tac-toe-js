@@ -49,13 +49,13 @@ const Gameboard = (function () {
     return { gameboard, winCondition };
 })();
 
-function player(name, sign) {
-    this.name = name;
-    this.sign = sign;
-    this.score = 0;
-    this.updateScore = function () {
-        this.score++;
-    };
-}
-
-const gameContoller = (function () {})();
+const gameContoller = (function () {
+    function player(name, sign) {
+        this.name = name;
+        this.sign = sign;
+        this.score = 0;
+        this.updateScore = function () {
+            this.score++;
+        };
+    }
+})();
