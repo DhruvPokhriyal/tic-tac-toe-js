@@ -6,11 +6,11 @@ const Gameboard = (function () {
         }
         return board;
     }
-    this.winCondition = function (sign) {
+    winCondition = function (sign) {
         function linearStreak(sign) {
-            let rowStreak = true;
-            let columnStreak = true;
             for (let i = 0; i < 3; i++) {
+                let rowStreak = true;
+                let columnStreak = true;
                 for (let j = 0; j < 3; j++) {
                     if (gameboard[i][j] != sign) {
                         rowStreak = false;
@@ -34,7 +34,9 @@ const Gameboard = (function () {
         }
         function offDiagonalStreak(sign) {
             return (
-                gameboard[0][2] == sign && gameboard[1][1] && gameboard[2][0]
+                gameboard[0][2] === sign &&
+                gameboard[1][1] === sign &&
+                gameboard[2][0] === sign
             );
         }
         return (
