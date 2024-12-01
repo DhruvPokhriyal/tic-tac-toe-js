@@ -69,8 +69,12 @@ const gameContoller = (function () {
         let row = prompt("Enter row :");
         let column = prompt("Enter column :");
         let board = Gameboard.getBoard();
-        while (board[row - 1][column - 1] != null) {
-            alert("Box already filled\nFill Another One");
+        while (board[row - 1][column - 1] != null && row <= 3 && column <= 3) {
+            if (row > 3 || column > 3) {
+                alert("Invalid Input");
+            } else {
+                alert("Box already filled\nFill Another One");
+            }
             row = prompt("Enter row :");
             column = prompt("Enter column :");
         }
