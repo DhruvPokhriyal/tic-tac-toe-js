@@ -51,6 +51,11 @@ const Gameboard = (function () {
 })();
 
 const gameContoller = (function () {
+    const cross = "X";
+    const circle = "O";
+    const red = new player("Red", cross);
+    const blue = new player("Blue", circle);
+
     function player(name, sign) {
         this.name = name;
         this.sign = sign;
@@ -59,6 +64,7 @@ const gameContoller = (function () {
             this.score++;
         };
     }
+
     function makeMove(player) {
         let row = prompt("Enter row :");
         let column = prompt("Enter column :");
@@ -70,28 +76,36 @@ const gameContoller = (function () {
         }
         board[row - 1][column - 1] = player.sign;
     }
-    const cross = "X";
-    const circle = "O";
-    const red = new player("Red", cross);
-    const blue = new player("Blue", circle);
-    let turn = Math.floor(Math.random() * 2); // turn == 1 signals red and turn == 0 signals blue
-    /* Later on add a mechanism here to check who lost the previous match and give them the first turn 
-       in the next round by changing the value of turn
-    */
-    let count = 0;
-    while (
-        Gameboard.winCondition(cross) == false ||
-        Gameboard.winCondition(circle) == false ||
-        count < 9
-    ) {
-        if (turn) {
-            //red
-            makeMove(red);
-        } else {
-            //blue
-            makeMove(blue);
+
+    function game() {
+        let turn = Math.floor(Math.random() * 2); // turn == 1 signals red and turn == 0 signals blue
+        /* Later on add a mechanism here to check who lost the previous match and give them the first turn 
+           in the next round by changing the value of turn
+        */
+        let count = 0;
+        while (
+            Gameboard.winCondition(cross) == false ||
+            Gameboard.winCondition(circle) == false ||
+            count < 9
+        ) {
+            if (turn) {
+                //red
+                makeMove(red);
+            } else {
+                //blue
+                makeMove(blue);
+            }
+            turn = !turn;
+            count++;
         }
-        turn = !turn;
-        count++;
+        if (Gameboard.winCondition(cross)) {
+            alert("Red Wins");
+        } else if (Gameboard.winCondition(circle)) {
+            alert("Blue Wins");
+        } else {
+            alert("Draw");
+        }
     }
+    let choice = prompt("Start (YES):");
+    if (choice == "YES") game();
 })();
