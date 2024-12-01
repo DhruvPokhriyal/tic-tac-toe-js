@@ -84,15 +84,17 @@ const gameContoller = (function () {
         */
         let count = 0;
         while (
-            Gameboard.winCondition(cross) == false ||
-            Gameboard.winCondition(circle) == false ||
-            count < 9
+            (Gameboard.winCondition(cross) == false) &
+            (Gameboard.winCondition(circle) == false) &
+            (count < 9)
         ) {
             if (turn) {
                 //red
+                alert("Red's Turn");
                 makeMove(red);
             } else {
                 //blue
+                alert("Blue's Turn");
                 makeMove(blue);
             }
             turn = !turn;
