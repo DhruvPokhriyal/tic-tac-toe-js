@@ -67,6 +67,9 @@ h6 {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: "left middle right";
+    font-family: "IM Fell English", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .left {
