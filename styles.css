@@ -124,3 +124,5 @@ h6 {
 .board div {
     border: 1px solid black;
 }
+
+/* Change the board structure so that it is inside a div and then the board is fitted in center of div  */
