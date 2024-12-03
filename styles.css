@@ -86,3 +86,15 @@ h6 {
     grid-area: right;
     background-color: #c62e2e;
 }
+
+.player-name {
+    font-size: 60px;
+}
+
+.player-score {
+    font-size: 70px;
+}
+
+.game-heading {
+    font-size: 80px;
+}
