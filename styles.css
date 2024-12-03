@@ -80,6 +80,8 @@ h6 {
 .middle {
     grid-area: middle;
     background-color: #e2e2e2;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
 }
 
 .right {
@@ -102,6 +104,8 @@ h6 {
 
 .game-heading {
     font-size: 80px;
+    display: flex;
+    justify-content: center;
 }
 
 .player-section {
