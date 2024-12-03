@@ -114,3 +114,13 @@ h6 {
     justify-content: center;
     color: white;
 }
+
+.board {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.board div {
+    border: 1px solid black;
+}
