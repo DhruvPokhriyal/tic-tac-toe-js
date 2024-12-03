@@ -118,6 +118,6 @@ const gameContoller = (function () {
             alert("Draw");
         }
     }
-    let choice = prompt("Start (YES):");
+    // let choice = prompt("Start (YES):");
     if (choice == "YES") game();
 })();
