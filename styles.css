@@ -60,3 +60,26 @@ h6 {
 #__next {
     isolation: isolate;
 }
+
+.page {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "left middle right";
+}
+
+.left {
+    grid-area: left;
+    background-color: #0d92f4;
+}
+
+.middle {
+    grid-area: middle;
+    background-color: #e2e2e2;
+}
+
+.right {
+    grid-area: right;
+    background-color: #c62e2e;
+}
