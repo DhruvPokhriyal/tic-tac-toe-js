@@ -115,7 +115,17 @@ h6 {
     color: white;
 }
 
+.board-section {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .board {
+    height: 50%;
+    width: 50%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -124,5 +134,3 @@ h6 {
 .board div {
     border: 1px solid black;
 }
-
-/* Change the board structure so that it is inside a div and then the board is fitted in center of div  */
