@@ -89,12 +89,24 @@ h6 {
 
 .player-name {
     font-size: 60px;
+    display: flex;
+    align-items: center;
 }
 
 .player-score {
     font-size: 70px;
+    display: flex;
+    justify-content: center;
+    padding-top: 100%;
 }
 
 .game-heading {
     font-size: 80px;
+}
+
+.player-section {
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+    justify-content: center;
+    color: white;
 }
