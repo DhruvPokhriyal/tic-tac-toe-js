@@ -129,8 +129,15 @@ h6 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    border: 12px solid black;
+    border-radius: 12%;
+    overflow: hidden;
 }
 
 .board div {
-    border: 1px solid black;
+    border-right: 3px solid black;
+}
+
+.board div:nth-child(n + 4) {
+    border-top: 3px solid black;
 }
