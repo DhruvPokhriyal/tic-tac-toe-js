@@ -147,7 +147,8 @@ h6 {
 }
 
 .block-1 {
-    background-image: url("assets/images/9104213_close_cross_remove_delete_icon.svg");
+    background: url("assets/images/9104213_close_cross_remove_delete_icon.svg")
+        no-repeat center;
 }
 
 .block-2 {
