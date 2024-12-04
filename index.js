@@ -111,13 +111,20 @@ const gameContoller = (function () {
             count++;
         }
         if (Gameboard.winCondition(cross)) {
+            red.score++;
             alert("Red Wins");
         } else if (Gameboard.winCondition(circle)) {
+            blue.score++;
             alert("Blue Wins");
         } else {
             alert("Draw");
         }
     }
-    // let choice = prompt("Start (YES):");
-    if (choice == "YES") game();
+    return { red, blue, game };
+})();
+
+const screenController = (function () {
+    const blueScore = document.querySelector("left .player-score");
+    const redScore = document.querySelector("right .player-score");
+    const boxes = document.querySelectorAll(".board > div");
 })();
