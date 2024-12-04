@@ -51,6 +51,9 @@ const Gameboard = (function () {
 })();
 
 const gameContoller = (function () {
+    const blueScore = document.querySelector("left .player-score");
+    const redScore = document.querySelector("right .player-score");
+    const boxes = document.querySelectorAll(".board > div");
     const cross = "X";
     const circle = "O";
     const red = new player("Red", cross);
@@ -100,31 +103,25 @@ const gameContoller = (function () {
         ) {
             if (turn) {
                 //red
-                alert("Red's Turn");
                 makeMove(red);
             } else {
                 //blue
-                alert("Blue's Turn");
                 makeMove(blue);
             }
             turn = !turn;
             count++;
         }
         if (Gameboard.winCondition(cross)) {
-            red.score++;
+            red.updateScore;
+            redScore.textContent = red.score;
             alert("Red Wins");
         } else if (Gameboard.winCondition(circle)) {
-            blue.score++;
+            blue.updateScore;
+            blueScore.textContent = blue.score;
             alert("Blue Wins");
         } else {
             alert("Draw");
         }
     }
     return { red, blue, game };
-})();
-
-const screenController = (function () {
-    const blueScore = document.querySelector("left .player-score");
-    const redScore = document.querySelector("right .player-score");
-    const boxes = document.querySelectorAll(".board > div");
 })();
