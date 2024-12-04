@@ -134,10 +134,10 @@ h6 {
     overflow: hidden;
 }
 
-.board div {
+.board > div {
     border-right: 3px solid black;
 }
 
-.board div:nth-child(n + 4) {
+.board > div:nth-child(n + 4) {
     border-top: 3px solid black;
 }
