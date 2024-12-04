@@ -141,3 +141,7 @@ h6 {
 .board > div:nth-child(n + 4) {
     border-top: 3px solid black;
 }
+
+.board > div:hover {
+    background-color: #c0c0c0;
+}
