@@ -53,11 +53,23 @@ const Gameboard = (function () {
 const gameContoller = (function () {
     const blueScore = document.querySelector("left .player-score");
     const redScore = document.querySelector("right .player-score");
-    const boxes = document.querySelectorAll(".board > div");
+    const boxes = Array.from(document.querySelectorAll(".board > div"));
     const cross = "X";
     const circle = "O";
     const red = new player("Red", cross);
     const blue = new player("Blue", circle);
+    for (let box of boxes) {
+        box.addEventListener("click", () => {
+            if (turn) {
+                box.style.backgroundColor =
+                    "   background: url('assets/images/9104213_close_cross_remove_delete_icon.svg') no-repeat center;";
+            } else {
+                box.style.backgroundColor =
+                    "url('assets/images/326565_blank_check_circle_icon.svg')no-repeat center;";
+                box.style.backgroundSize = "70px 70px";
+            }
+        });
+    }
 
     function player(name, sign) {
         this.name = name;
