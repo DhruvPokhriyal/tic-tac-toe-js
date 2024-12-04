@@ -58,18 +58,6 @@ const gameContoller = (function () {
     const circle = "O";
     const red = new player("Red", cross);
     const blue = new player("Blue", circle);
-    for (let box of boxes) {
-        box.addEventListener("click", () => {
-            if (turn) {
-                box.style.backgroundColor =
-                    "   background: url('assets/images/9104213_close_cross_remove_delete_icon.svg') no-repeat center;";
-            } else {
-                box.style.backgroundColor =
-                    "url('assets/images/326565_blank_check_circle_icon.svg')no-repeat center;";
-                box.style.backgroundSize = "70px 70px";
-            }
-        });
-    }
 
     function player(name, sign) {
         this.name = name;
@@ -107,6 +95,18 @@ const gameContoller = (function () {
         /* Later on add a mechanism here to check who lost the previous match and give them the first turn 
            in the next round by changing the value of turn
         */
+        for (let box of boxes) {
+            box.addEventListener("click", () => {
+                if (turn) {
+                    box.style.backgroundColor =
+                        "   background: url('assets/images/9104213_close_cross_remove_delete_icon.svg') no-repeat center;";
+                } else {
+                    box.style.backgroundColor =
+                        "url('assets/images/326565_blank_check_circle_icon.svg')no-repeat center;";
+                    box.style.backgroundSize = "70px 70px";
+                }
+            });
+        }
         let count = 0;
         while (
             (Gameboard.winCondition(cross) == false) &
