@@ -60,14 +60,9 @@ const gameContoller = (function () {
     const red = new player("Red", cross);
     const blue = new player("Blue", circle);
     let row_num, col_num, coordinates;
-    for (let box of boxes) {
-        box.addEventListener("click", (e) => {
-            coordinates = e.target.id;
-            coordinates_array = coordinates.split(",");
-            row_num = coordinates_array[0];
-            col_num = coordinates_array[1];
-        });
-    }
+    let turn = Math.floor(Math.random() * 2);
+
+    let count = 0;
 
     function player(name, sign) {
         this.name = name;
@@ -78,11 +73,40 @@ const gameContoller = (function () {
         };
     }
 
-    function game() {
-        let turn = Math.floor(Math.random() * 2);
-        let count = 0;
+    function makeMove(user, row, col) {
+        board[row][col] = user.sign;
+        if (winCondition(user.sign)) {
+            alert(`${user.name} Wins`);
+        } else if (count == 9) {
+            alert("It's a draw");
+        }
+        count++;
     }
-    game();
+
+    for (let box of boxes) {
+        box.addEventListener("click", (e) => {
+            coordinates = e.target.id;
+            coordinates_array = coordinates.split(",");
+            row_num = coordinates_array[0];
+            col_num = coordinates_array[1];
+            if (board[row_num][col_num] != null) return;
+            else {
+                let user = turn ? blue : red;
+                makeMove(user, row_num, col_num);
+                box.style.backgroundRepeat = "no-repeat";
+                box.style.backgroundPosition = "center";
+                if (user == blue) {
+                    box.style.backgroundImage =
+                        'url("assets/images/326565_blank_check_circle_icon.svg")';
+                    box.style.backgroundSize = "70px 70px";
+                } else {
+                    box.style.backgroundImage =
+                        'url("assets/images/9104213_close_cross_remove_delete_icon.svg")';
+                }
+                turn = !turn;
+            }
+        });
+    }
 })();
 
 // turn == 1 signals red and turn == 0 signals blue
