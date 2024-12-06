@@ -145,3 +145,16 @@ h6 {
 .board > div:hover {
     background-color: #c0c0c0;
 }
+
+.cross {
+    background-image: url("assets/images/9104213_close_cross_remove_delete_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.circle {
+    background-image: url("assets/images/326565_blank_check_circle_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70px 70px;
+}

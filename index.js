@@ -77,10 +77,20 @@ const gameContoller = (function () {
         board[row][col] = user.sign;
         if (winCondition(user.sign)) {
             alert(`${user.name} Wins`);
+            resetGame();
         } else if (count == 9) {
             alert("It's a draw");
+            resetGame();
         }
         count++;
+    }
+
+    function resetGame() {
+        count = 0;
+        for (let box of boxes) {
+            box.classList.remove("circle");
+            box.classList.remove("cross");
+        }
     }
 
     for (let box of boxes) {
@@ -93,15 +103,10 @@ const gameContoller = (function () {
             else {
                 let user = turn ? blue : red;
                 makeMove(user, row_num, col_num);
-                box.style.backgroundRepeat = "no-repeat";
-                box.style.backgroundPosition = "center";
                 if (user == blue) {
-                    box.style.backgroundImage =
-                        'url("assets/images/326565_blank_check_circle_icon.svg")';
-                    box.style.backgroundSize = "70px 70px";
+                    box.classList.add("circle");
                 } else {
-                    box.style.backgroundImage =
-                        'url("assets/images/9104213_close_cross_remove_delete_icon.svg")';
+                    box.classList.add("cross");
                 }
                 turn = !turn;
             }
