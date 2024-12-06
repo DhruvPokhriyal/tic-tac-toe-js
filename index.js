@@ -78,39 +78,9 @@ const gameContoller = (function () {
         };
     }
 
-    function makeMove(user, turn) {
-        if (board[row_num][col_num] == null) {
-            let box = document.getElementById(coordinates);
-            if (turn) {
-                box.style.background =
-                    'url("assets/images/326565_blank_check_circle_icon.svg") no-repeat center;';
-                box.style.backgroundSize = "70px 70px";
-            } else {
-                box.style.background =
-                    'url("assets/images/9104213_close_cross_remove_delete_icon.svg")no-repeat center;';
-            }
-            board[row_num][col_num] = user.sign;
-        }
-    }
-
     function game() {
         let turn = Math.floor(Math.random() * 2);
         let count = 0;
-        while (
-            Gameboard.winCondition(red.score) == false &&
-            Gameboard.winCondition(blue.score) == false &&
-            count < 9
-        ) {
-            if (turn) {
-                makeMove(blue, turn);
-                // blue's  turn
-            } else {
-                makeMove(red, turn);
-                // red's turn
-            }
-            turn *= -1;
-            count++;
-        }
     }
     game();
 })();

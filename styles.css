@@ -145,14 +145,3 @@ h6 {
 .board > div:hover {
     background-color: #c0c0c0;
 }
-
-.block-1 {
-    background: url("assets/images/9104213_close_cross_remove_delete_icon.svg")
-        no-repeat center;
-}
-
-.block-2 {
-    background: url("assets/images/326565_blank_check_circle_icon.svg")
-        no-repeat center;
-    background-size: 70px 70px;
-}
