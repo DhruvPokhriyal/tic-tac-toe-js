@@ -52,13 +52,13 @@ const Gameboard = (function () {
 
 const gameContoller = (function () {
     const board = Gameboard.getBoard();
-    const blueScore = document.querySelector("left .player-score");
-    const redScore = document.querySelector("right .player-score");
+    const blueScore = document.querySelector(".left .player-score");
+    const redScore = document.querySelector(".right .player-score");
     const boxes = Array.from(document.querySelectorAll(".board > div"));
     const cross = "X";
     const circle = "O";
-    const red = new player("Red", cross);
-    const blue = new player("Blue", circle);
+    const red = new player("red", cross);
+    const blue = new player("blue", circle);
     let row_num, col_num, coordinates;
     let turn = Math.floor(Math.random() * 2);
 
@@ -78,6 +78,15 @@ const gameContoller = (function () {
         if (winCondition(user.sign)) {
             alert(`${user.name} Wins`);
             resetGame();
+            if (user.name == "red") {
+                let score = Number(redScore.textContent);
+                console.log(score);
+                redScore.textContent = score + 1;
+            } else {
+                let score = Number(blueScore.textContent);
+                console.log(score);
+                blueScore.textContent = score + 1;
+            }
             return;
         } else if (count == 9) {
             alert("It's a draw");
