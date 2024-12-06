@@ -59,6 +59,15 @@ const gameContoller = (function () {
     const circle = "O";
     const red = new player("Red", cross);
     const blue = new player("Blue", circle);
+    let row_num, col_num, coordinates;
+    for (let box of boxes) {
+        box.addEventListener("click", (e) => {
+            coordinates = e.target.id;
+            coordinates_array = coordinates.split(",");
+            row_num = coordinates_array[0];
+            col_num = coordinates_array[1];
+        });
+    }
 
     function player(name, sign) {
         this.name = name;
@@ -68,15 +77,42 @@ const gameContoller = (function () {
             this.score++;
         };
     }
+
+    function makeMove(user, turn) {
+        if (board[row_num][col_num] == null) {
+            let box = document.getElementById(coordinates);
+            if (turn) {
+                box.style.background =
+                    'url("assets/images/326565_blank_check_circle_icon.svg") no-repeat center;';
+                box.style.backgroundSize = "70px 70px";
+            } else {
+                box.style.background =
+                    'url("assets/images/9104213_close_cross_remove_delete_icon.svg")no-repeat center;';
+            }
+            board[row_num][col_num] = user.sign;
+        }
+    }
+
     function game() {
         let turn = Math.floor(Math.random() * 2);
         let count = 0;
         while (
-            !Gameboard.winCondition(red.score) &&
-            !Gameboard.winCondition(blue.score) &&
-            count < 0
-        ) {}
+            Gameboard.winCondition(red.score) == false &&
+            Gameboard.winCondition(blue.score) == false &&
+            count < 9
+        ) {
+            if (turn) {
+                makeMove(blue, turn);
+                // blue's  turn
+            } else {
+                makeMove(red, turn);
+                // red's turn
+            }
+            turn *= -1;
+            count++;
+        }
     }
+    game();
 })();
 
 // turn == 1 signals red and turn == 0 signals blue
