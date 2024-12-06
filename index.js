@@ -78,9 +78,11 @@ const gameContoller = (function () {
         if (winCondition(user.sign)) {
             alert(`${user.name} Wins`);
             resetGame();
+            return;
         } else if (count == 9) {
             alert("It's a draw");
             resetGame();
+            return;
         }
         count++;
     }
@@ -90,6 +92,11 @@ const gameContoller = (function () {
         for (let box of boxes) {
             box.classList.remove("circle");
             box.classList.remove("cross");
+        }
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                board[i][j] = null;
+            }
         }
     }
 
@@ -102,12 +109,12 @@ const gameContoller = (function () {
             if (board[row_num][col_num] != null) return;
             else {
                 let user = turn ? blue : red;
-                makeMove(user, row_num, col_num);
                 if (user == blue) {
                     box.classList.add("circle");
                 } else {
                     box.classList.add("cross");
                 }
+                makeMove(user, row_num, col_num);
                 turn = !turn;
             }
         });
