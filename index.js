@@ -76,21 +76,27 @@ const gameContoller = (function () {
     function makeMove(user, row, col) {
         board[row][col] = user.sign;
         if (winCondition(user.sign)) {
-            alert(`${user.name} Wins`);
-            resetGame();
-            if (user.name == "red") {
-                let score = Number(redScore.textContent);
-                console.log(score);
-                redScore.textContent = score + 1;
-            } else {
-                let score = Number(blueScore.textContent);
-                console.log(score);
-                blueScore.textContent = score + 1;
-            }
+            setTimeout(() => {
+                alert(`${user.name} Wins`);
+                resetGame();
+                if (user.name == "red") {
+                    let score = Number(redScore.textContent);
+                    console.log(score);
+                    redScore.textContent = score + 1;
+                } else {
+                    let score = Number(blueScore.textContent);
+                    console.log(score);
+                    blueScore.textContent = score + 1;
+                }
+            }, 200);
+
             return;
         } else if (count == 9) {
-            alert("It's a draw");
-            resetGame();
+            setTimeout(() => {
+                alert("It's a draw");
+                resetGame();
+            }, 200);
+
             return;
         }
         count++;
