@@ -51,6 +51,7 @@ const Gameboard = (function () {
 })();
 
 const gameContoller = (function () {
+    const board = Gameboard.getBoard();
     const blueScore = document.querySelector("left .player-score");
     const redScore = document.querySelector("right .player-score");
     const boxes = Array.from(document.querySelectorAll(".board > div"));
@@ -67,73 +68,18 @@ const gameContoller = (function () {
             this.score++;
         };
     }
-
-    function makeMove(player) {
-        let row = prompt("Enter row :");
-        let column = prompt("Enter column :");
-        let board = Gameboard.getBoard();
-        while (
-            board[row - 1][column - 1] != null &&
-            row <= 3 &&
-            column <= 3 &&
-            row > 0 &&
-            column > 0
-        ) {
-            if (row > 3 || column > 3 || row <= 0 || column <= 0) {
-                alert("Invalid Input");
-            } else {
-                alert("Box already filled\nFill Another One");
-            }
-            row = prompt("Enter row :");
-            column = prompt("Enter column :");
-        }
-        board[row - 1][column - 1] = player.sign;
-    }
-
     function game() {
-        let turn = Math.floor(Math.random() * 2); // turn == 1 signals red and turn == 0 signals blue
-        /* Later on add a mechanism here to check who lost the previous match and give them the first turn 
-           in the next round by changing the value of turn
-        */
-        for (let box of boxes) {
-            box.addEventListener("click", () => {
-                if (turn) {
-                    box.style.backgroundColor =
-                        "   background: url('assets/images/9104213_close_cross_remove_delete_icon.svg') no-repeat center;";
-                } else {
-                    box.style.backgroundColor =
-                        "url('assets/images/326565_blank_check_circle_icon.svg')no-repeat center;";
-                    box.style.backgroundSize = "70px 70px";
-                }
-            });
-        }
+        let turn = Math.floor(Math.random() * 2);
         let count = 0;
         while (
-            (Gameboard.winCondition(cross) == false) &
-            (Gameboard.winCondition(circle) == false) &
-            (count < 9)
-        ) {
-            if (turn) {
-                //red
-                makeMove(red);
-            } else {
-                //blue
-                makeMove(blue);
-            }
-            turn = !turn;
-            count++;
-        }
-        if (Gameboard.winCondition(cross)) {
-            red.updateScore;
-            redScore.textContent = red.score;
-            alert("Red Wins");
-        } else if (Gameboard.winCondition(circle)) {
-            blue.updateScore;
-            blueScore.textContent = blue.score;
-            alert("Blue Wins");
-        } else {
-            alert("Draw");
-        }
+            !Gameboard.winCondition(red.score) &&
+            !Gameboard.winCondition(blue.score) &&
+            count < 0
+        ) {}
     }
-    return { red, blue, game };
 })();
+
+// turn == 1 signals red and turn == 0 signals blue
+/* Later on add a mechanism here to check who lost the previous match and give them the first turn 
+           in the next round by changing the value of turn
+        */
